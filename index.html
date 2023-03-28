@@ -145,15 +145,15 @@
     </div>
   </div>
 
-  <div class="banner">
+  <div class="vamosJuntos">
     <div class="img_banner">
       <img src="img/RODAPE-OFC - Copia.png" alt="Imagem do banner" class="banner-image">
     </div>
-    <div class="info_foto">
+    <div class="info_foto_vamosJuntos">
       <div class="info2">
         <h1>Vamos juntos nessa?</h1>
-        <h2>+50 clientes</h2>
-        <h2>+300 projetos realizados</h2>
+        <h2><span>+50</span> clientes</h2>
+        <h2><span>+300</span>projetos realizados</h2>
       </div>
       <div class="foto">
         <img src="img/foguete.png" alt="" height="512">
@@ -170,30 +170,35 @@
         <h2>Veja nosso portifólio</h2>
       </div>
       <div class="foto">
-        <img
-          src="https://images.vexels.com/media/users/3/205157/isolated/preview/3a1d0d70d14ba68cd27271c889618e51-ilustracao-do-espaco-astronauta.png"
-          alt="">
+        <div id="instafeed"></div>
+
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+        <script>
+          $(document).ready(function () {
+            var token = 'AQBWegBHPCIvvIqRPMiVixxMfZuYJOXHuVx72AYfgOdQR7LDQZQC1BgbDWjOhDVO0xcb6RjQj3EAqdwpIuxorlX4MmAtswZVEDKphJdFrdrvJePP8kPNq2QERnmEo-RZG-ImwhJXVuJ-DVzOh6Jp58IsjFdRX5rqduflaaJUmxyLmEM3km2D5nqBYEy6MT7c9fttoosqFzvp032INMIRJuPVvYLlu8LYn8LNukFfno_0tQ';
+            var count = 6;
+            var userId = '542893921162407';
+
+            var instagramUrl = 'https://graph.instagram.com/' + userId + '/media?fields=id,caption,media_type,media_url,thumbnail_url,permalink&access_token=' + token + '&count=' + count;
+
+            $.getJSON(instagramUrl, function (response) {
+              var instaFeed = $('#instafeed');
+              $.each(response.data, function (index, value) {
+                var image = value.media_url;
+                var link = value.permalink;
+                var html = '<a href="' + link + '" target="_blank"><img src="' + image + '"></a>';
+                instaFeed.append(html);
+              });
+            });
+          });
+        </script>
       </div>
       <div class="botao"> <a class="contato" href="#">CONTATO</a>
       </div>
     </div>
   </div>
 
-  <div class="banner">
-    <div class="img_banner">
-      <img src="img/RODAPE-OFC - Copia.png" alt="Imagem do banner" class="banner-image">
-    </div>
-    <div class="info_foto">
-      <div class="info2">
-        <h1>Vamos juntos nessa?</h1>
-        <h2>+50 clientes</h2>
-        <h2>+300 projetos realizados</h2>
-      </div>
-      <div class="foto">
-        <img src="img/foguete.png" alt="" height="512">
-      </div>
-
-    </div>
 
 </body>
 
